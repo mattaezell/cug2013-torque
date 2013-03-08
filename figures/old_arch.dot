@@ -1,0 +1,33 @@
+digraph old_arch {
+	subgraph cluster_moab01 {
+		"moab01_moab" -> "moab01_pbs_server"
+		"moab01_pbs_server" -> "eslogin1"
+		"moab01_pbs_server" -> "eslogin2"
+		"moab01_pbs_server" -> "eslogin3"
+		"moab01_pbs_server" -> "eslogin4"
+	}
+	subgraph cluster_c1 {
+		"c1_moab" -> "c1_pbs_server"
+		"c1_pbs_server" -> "c1-batch1"
+		"c1_pbs_server" -> "c1-batch2"
+		"c1_pbs_server" -> "c1-batch3"
+		"c1_pbs_server" -> "c1-batch4"
+	}
+	subgraph cluster_c2 {
+		"c2_moab" -> "c2_pbs_server"
+		"c2_pbs_server" -> "c2-batch1"
+		"c2_pbs_server" -> "c2-batch2"
+		"c2_pbs_server" -> "c2-batch3"
+		"c2_pbs_server" -> "c2-batch4"
+	}
+	subgraph cluster_t1 {
+		"t1_moab" -> "t1_pbs_server"
+		"t1_pbs_server" -> "t1-batch1"
+		"t1_pbs_server" -> "t1-batch2"
+		"t1_pbs_server" -> "t1-batch3"
+		"t1_pbs_server" -> "t1-batch4"
+	}
+	moab01_moab -> c1_moab
+	moab01_moab -> c2_moab
+	moab01_moab -> t1_moab
+}
