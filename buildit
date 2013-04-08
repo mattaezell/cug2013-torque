@@ -1,6 +1,8 @@
 #!/bin/sh
 
 pdflatex cug2013_torque.tex
+bibtex cug2013_torque
+pdflatex cug2013_torque.tex
 pdflatex cug2013_torque.tex
 
 if [ "x$(uname)" == "xDarwin" ];then
