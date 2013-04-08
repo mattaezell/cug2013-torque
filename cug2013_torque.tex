@@ -3,8 +3,8 @@
 % Various packages that might be useful
 \usepackage[pdftex]{graphicx}
 \usepackage{array}
-\usepackage[tight,footnotesize]{subfigure}
-\usepackage{url}
+%\usepackage[tight,footnotesize]{subfigure}
+%\usepackage{url}
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{color}
 
@@ -50,42 +50,25 @@ TORQUE; Resource Manager; Adaptive Computing; Cray; ALPS; Moab; HPC; Titan; Gaea
 \end{IEEEkeywords}
 
 
-\section{Introduction}
+\input{sections/introduction}
 
-\section{Cray ALPS}
+\input{sections/alps}
 
-\cite{alps}
+\input{sections/prev_design}
 
-\section{Previous Design}
-
-\section{New Design}
-\subsection{Orphan ALPS Reservations}
+\input{sections/new_design}
 
 \section{Production Experiences}
 
-\subsection{Experiences on Gaea}
+\input{sections/gaea}
 
-\subsection{Experiences on Titan}
+\input{sections/titan}
 
-\section{Future Work}
+\input{sections/future_work}
 
-\section{Conclusion}
+\input{sections/conclusion}
 
-% use section* for acknowledgement
-%\section*{Acknowledgment}
-
-%\textcolor{red}{
-%	The authors would like to thank...
-%	more thanks here
-%}
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
+\input{sections/acknowledgment}
 
 % references section
 \bibliographystyle{IEEEtran}
