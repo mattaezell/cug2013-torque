@@ -1,1 +1,55 @@
-\subsection{Experiences on Gaea}
+\subsection{Early Experiences on Gaea}
+
+The National Climate-Computing Research Center (NCRC) at Oak Ridge National
+Laboratory houses and operates high performance computing resources for the
+National Atmospheric and Oceanic Administration (NOAA) and its research
+partners.  NCRC's flagship system is named Gaea, after the Greek goddess of
+earth.  Gaea was delivered and upgraded in phases, ultimately culminating in
+two production partitions with a combined peak performance of 1.1 petaflops.
+
+In July of 2012, the ``c1'' partition of Gaea was upgraded from a Cray XT6
+system with the SeaStar interconnect and AMD ``Magny Cours'' processors to a
+Cray XE6 system with the Gemini interconnect and AMD ``Interlagos'' processors.
+The previous system used TORQUE 2.5.x.  Moab was setup in a grid; there was a
+central Moab that made scheduling decisions and an instance of Moab on c1 that
+interfaced with ALPS.  The hardware upgrade also required a software upgrade,
+and it was determined that TORQUE version 4.1 should be installed and tested.
+
+At the time, version 4.1.0 was the latest release available.  Several important
+bugs had already been identified and fixed, so ORNL decided to pull souce from
+the 4.1-fixes branch in subversion.  Installation and initial testing were
+successful, but it wasn't long before problems were discovered.
+
+The first problem encountered in the acceptance test was missing \emph{PBS_O_*}
+environment variables.  The acceptance harness used variables such as
+\emph{PBS_O_WORKDIR} to setup the correct environment prior to running a job.
+When those were missing, the jobs would fail.
+
+The most severe bug found early on was related to improper handling of
+environment variables.  When variables were set without values, the qsub
+command would segfault and fail to submit the job.  Also, variable values that
+contained comma or newline characters would be incorrectly split and sent to
+the environment as multiple variables.  This behavior was not obvious at first
+glance, but it was causing an acceptance application to fail due to a missing
+environment variable that increased the thread stack size.
+
+TORQUE 4.0 included a major architectural change: the pbs_server was made
+multi-threaded.  While this is essential for performance and scaling, it also
+introduces the possibility of race conditions and deadlocks.  Although the
+developers were careful in their implementation, several deadlocks were
+experienced.
+
+Another bug caused Cray jobs to fail when the pbs_server was restarted.  It was
+due to Cray nodes not being present when the jobs were being recovered.  Also,
+X11 forwarding in interactive jobs was not working correctly, preventing the
+use of debuggers and GUI frontends.  A problem was also encountered where
+trying to delete a running job in the Cray environment failed.  The server was
+trying to communicate with the cray compute node instead of the login node that
+was running the job script.
+
+As each major bug was identified and fixed, ORNL pulled the latest source from
+subversion and ran with that.  TORQUE version 4.1.1 was released on August 30,
+2012, but there were no significant relevant fixes above the version already in
+production.  In late October, the Gaea environment moved to TORQUE version
+4.1.3.  This version contains several fixes, including some patches developed
+at ORNL.
