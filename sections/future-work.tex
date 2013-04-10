@@ -1,1 +1,17 @@
 \section{Future Work}
+
+Work is ongoing to improve the quality of TORQUE.  Unit testing coverage is
+improving, and it will continue to improve over time.  The TORQUE 4.2 series
+moved from a C compiler to a C++ compiler, giving access to additional language
+constructs as well as the Standard Template Library (STL).  Over time, some of
+the one-off TORQUE implementations of standard data structures will be replaced
+with their counterparts from the STL.  Additionally, there will be improvement
+on the Cray-specific features.  Some specific ideas include:
+
+\begin{itemize}
+  \item Additional logging of interactions between TORQUE and ALPS, including 
+        full XML at high log levels
+  \item Taking advantage of new features in higher ALPS BASIL versions, such as
+        inventory \emph{changecount} and reservation release claim count
+  \item More robust handling of reservation IDs and orphan handling
+\end{itemize}
