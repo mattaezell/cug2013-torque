@@ -1,0 +1,15 @@
+\begin{abstract}
+High performance computing resources utilize batch systems to manage the user
+workload. Cray systems are uniquely different from typical clusters due to
+Cray’s Application Level Placement Scheduler (ALPS). ALPS manages binary
+transfer, job launch and monitoring, and error handling. Batch systems require
+special support to integrate with ALPS using an XML protocol called BASIL.
+
+Previous versions of Adaptive Computing’s TORQUE and Moab batch suite integrated
+with ALPS from within Moab, using PERL scripts to interface with BASIL. This
+would occasionally lead to problems when all the components would become
+unsynchronized. Version 4.1 of the TORQUE Resource Manager introduced new
+features that allow it to directly integrate with ALPS using BASIL. This paper
+describes production experiences at Oak Ridge National Lab using the new TORQUE
+software versions.
+\end{abstract}
