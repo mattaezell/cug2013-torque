@@ -32,8 +32,9 @@ Moab no longer knows anything about ALPS. From Moab's perspective, it is
 scheduling a two different partitions (clusters) - the login nodes in one
 partition and the compute nodes in the other. Moab is only making scheduling
 decisions, and so it is now only given information relevant to scheduling. This
-is outlined in \ref{fig:reporting}. Moab maintains the ability to schedule
-login-only jobs for the purpose of compilation or other simple, short tasks.
+is outlined in Figure \ref{fig:reporting}. Moab maintains the ability to
+schedule login-only jobs for the purpose of compilation or other simple, short
+tasks.
 
 The pbs_server ties the two together. When a node status is given, the reporter
 mom's status is presented as the status of all of the compute nodes, and the
