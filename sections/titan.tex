@@ -1,1 +1,37 @@
 \subsection{Experiences on Titan}
+
+While Jaguar never ran the new architecture aside from the beta test shot,
+Titan began its life in September 2012 running the new design.  While many of
+the issues inherent in a new design had already been discovered and fixed
+during both the beta and subsequent use on the TDS’s, the Titan acceptance team
+put the new software stack through its paces at scale for true production.
+This transition also provided a new opportunity to externalize both Moab and
+TORQUE servers from the Cray platform to provide job access for users even when
+the Cray was unavailable.  Two fundamental changes at once is generally not a
+good idea, but all in all, things have gone fairly well.
+
+Overwhelmingly, the primary problem that has been seen on Titan is deadlocks in
+the TORQUE server.  Threading the version 4 TORQUE server is clearly a step in
+the right direction, but it has come with some growing pains.  A deadlocked
+TORQUE server causes issues for the entire batch system from simple job
+submission failure to a hung or at least very slow Moab server.  Primarily due
+to the fact that the end users were seeing job submission failures, a script
+was created early in the acceptance period which first determined the TORQUE
+server was deadlocked, gdb attached to the server and generated a core file,
+and then restarted the server.  By running this script on a regular schedule
+via cron, the pain felt by the users became much more bearable until the
+deadlocks were found and fixed.  Through the efforts of both ORNL and Adaptive
+staff, all known deadlocks have been fixed, and the batch system is running
+well at this point. 
+
+The transition to an external Moab and TORQUE server has certainly been well
+received by the users.  Having the ability to manipulate jobs when the Cray is
+unavailable provides the user with everything needed for the job process except
+the actual execution.  Some effort had to be devoted to finding a TORQUE server
+bug that prevented this from working, but that has now been fixed as well.
+
+Again, the transition to the new architecture and the external servers has been
+a success in spite of a few growing pains.  Ultimately, the users have seen
+benefits from both better synchronization with ALPS and the ability to
+manipulate jobs while the Cray itself is unavailable.
+
