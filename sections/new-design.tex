@@ -13,19 +13,20 @@ and maintain.
 \subsection{How It Works}
 \begin{figure}
   \centering
-  \includegraphics[width=3.0in]{figures/new-diagram.pdf}
+  \includegraphics[width=3.6in]{figures/new-diagram.pdf}
   \caption{New Reporting Structure}\label{fig:reporting}
 \end{figure}
 
-All ALPS integration now takes place on the mom daemons. Two different kinds of
-mom daemons are run for this setup: a reporter mom and one or more alps_login
-moms. The reporter mom's only function is to report the inventory information
-to pbs_server, which then discovers all of the computes.
+All ALPS integration now takes place on the mom daemons as shown in Figure
+\ref{fig:reporting}. Two different kinds of mom daemons are run for this setup:
+a reporter mom and one or more alps_login moms. The reporter mom's only
+function is to report the inventory information to pbs_server, which then
+discovers all of the computes.
 
 The other mom daemon is the alps_login type, which manages job starts. The
 login mom creates and confirms the reservations for the job before launching
 it. When the job is done, the mom releases its ALPS reservation. The job start
-process is diagramed below in \ref{fig:starting}.
+process is diagramed in Figure \ref{fig:starting}.
 
 Moab no longer knows anything about ALPS. From Moab's perspective, it is
 scheduling a two different partitions (clusters) - the login nodes in one
@@ -43,7 +44,7 @@ responsible for starting that job.
 
 \begin{figure}
   \centering
-  \includegraphics[width=3.0in]{figures/job-start.pdf}
+  \includegraphics[width=3.5in]{figures/job-start.pdf}
   \caption{Job Starting}\label{fig:starting}
 \end{figure}
 
