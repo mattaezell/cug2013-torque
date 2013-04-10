@@ -49,3 +49,11 @@ run the perl scripts.  It must then process the string-based output to turn it
 into data structures that can be ingested by Moab's internal processing.  This
 can lengthen Moab's average iteration duration, which has a negative impact on
 interactive use of Moab's command line tools.
+
+An issue would occasionally arise on production systems that had a very
+negative impact on utilization.  Certain circumstances could cause an ALPS
+reservation to remain after the job had exited.  These ``orphan'' reservations
+would block system resources until manually removed.  In an attempt to avoid
+this, Moab added code to help find and destroy these orphan reservations.  By
+setting the \textbf{MOABPARCLEANUP} environment variable, Moab would know to
+try to remove reservations that it didn't expect to be present.
