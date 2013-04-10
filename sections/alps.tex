@@ -1,5 +1,11 @@
 \section{Cray Application Level Placement Scheduler (ALPS)}
 
+\begin{figure*}
+  \centering
+  \includegraphics[width=6.5in]{figures/alps_hilevel.pdf}\\
+  \caption{High-Level ALPS Design}\label{fig:alps_hilevel}
+\end{figure*}
+
 The term ``resource manager'' is overloaded in the batch processing world, and
 the combination of systems needed to effectively control batch processing on
 the Cray X-series platform certainly supports the confusion.  At the lowest
@@ -51,4 +57,3 @@ and reservations, and the ability to create, confirm, and delete reservations.
 Using this interface, batch systems are able to manage all aspects of job
 submission, scheduling, placement and deletion by communicating with ALPS which
 communicates directly with the compute nodes.
-
