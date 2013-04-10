@@ -1,12 +1,12 @@
 #!/bin/sh
 
-pdflatex cug2013_torque.tex
-bibtex cug2013_torque
-pdflatex cug2013_torque.tex
-pdflatex cug2013_torque.tex
+pdflatex cug2013-torque.tex
+bibtex cug2013-torque
+pdflatex cug2013-torque.tex
+pdflatex cug2013-torque.tex
 
 if [ "x$(uname)" == "xDarwin" ];then
-	open -a preview cug2013_torque.pdf
+	open -a preview cug2013-torque.pdf
 elif which evince; then
-	evince cug2013_torque.pdf &
+	evince cug2013-torque.pdf &
 fi

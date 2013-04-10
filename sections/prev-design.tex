@@ -1,0 +1,23 @@
+\section{Moab-ALPS Integration Design}
+
+Prior to TORQUE version 4.1, the primary interaction between the batch system
+and ALPS was managed by Moab.  Moab has the concept of a ``native'' interface
+that allows external scripts to handle logic in user-configurable ways.  For
+Cray systems, the TORQUE resource manager was setup as a native interface.
+Multiple scripts were provided to manage reservation creation and deletion as
+well as job launch:
+
+\begin{description}
+  \item[node.query.xt4.pl] \hfill \\
+    This script queries BASIL to get the configuration and state of all compute nodes on the system
+  \item[job.query.xt4.pl] \hfill \\
+    The job query script executes and parses TORQUE commands to obtain a list of all jobs known to the system, including details such as state, owner, account, queue, and resource requests.
+  \item[job.start.xt4.pl] \hfill \\
+    This script determines the best pbs_mom to host the job and forces execution on this node
+  \item[partition.query.xt4.pl] \hfill \\
+    The partition query script talks to both ALPS and TORQUE to determine what ALPS reservations exist and if they correspond to a running job
+  \item[partition.create.xt4.pl] \hfill \\
+    This script interfaces with BASIL to create a reservation based on the resource requests of a job. It does not confirm the request, as this must be done by TORQUE once the SID or PAGG is known
+  \item[partition.delete.xt4.pl] \hfill \\
+    The partition delete script, as its name implies, is used to remove ALPS reservations once jobs have completed
+\end{description}
