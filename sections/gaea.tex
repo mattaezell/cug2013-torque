@@ -12,8 +12,9 @@ system with the SeaStar interconnect and AMD ``Magny Cours'' processors to a
 Cray XE6 system with the Gemini interconnect and AMD ``Interlagos'' processors.
 The previous system used TORQUE 2.5.x.  Moab was setup in a grid; there was a
 central Moab that made scheduling decisions and an instance of Moab on c1 that
-interfaced with ALPS.  The hardware upgrade also required a software upgrade,
-and it was determined that TORQUE version 4.1 should be installed and tested.
+interfaced with ALPS.  The hardware upgrade also required an operating system
+software upgrade, and it was determined that TORQUE version 4.1 should be
+installed and tested.
 
 At the time, version 4.1.0 was the latest release available.  Several important
 bugs had already been identified and fixed, so ORNL decided to pull souce from
@@ -40,16 +41,16 @@ developers were careful in their implementation, several deadlocks were
 experienced.
 
 Another bug caused Cray jobs to fail when the pbs_server was restarted.  It was
-due to Cray nodes not being present when the jobs were being recovered.  Also,
-X11 forwarding in interactive jobs was not working correctly, preventing the
-use of debuggers and GUI frontends.  A problem was also encountered where
-trying to delete a running job in the Cray environment failed.  The server was
-trying to communicate with the cray compute node instead of the login node that
-was running the job script.
+due to Cray nodes not being present when the jobs were being recovered.  X11
+forwarding in interactive jobs was not working correctly, preventing the use of
+debuggers and GUI frontends.  A problem was also encountered where trying to
+delete a running job in the Cray environment failed.  The server was trying to
+communicate with the cray compute node instead of the login node that was
+running the job script.
 
-As each major bug was identified and fixed, ORNL pulled the latest source from
-subversion and ran with that.  TORQUE version 4.1.1 was released on August 30,
-2012, but there were no significant relevant fixes above the version already in
-production.  In late October, the Gaea environment moved to TORQUE version
-4.1.3.  This version contains several fixes, including some patches developed
-at ORNL.
+As each major bug impacting system operation was identified and fixed, ORNL
+pulled the latest source from subversion and ran with that.  TORQUE version
+4.1.1 was released on August 30, 2012, but there were no significant relevant
+fixes above the version already in production.  In late October, the Gaea
+environment moved to TORQUE version 4.1.3.  This version contained several
+fixes, including several patches developed at ORNL.

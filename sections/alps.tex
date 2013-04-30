@@ -9,7 +9,7 @@
 The term ``resource manager'' is overloaded in the batch processing world, and
 the combination of systems needed to effectively control batch processing on
 the Cray X-series platform certainly supports the confusion.  At the lowest
-level in the Cray hierarchy sits the Cray Application Level Placement Scheduler
+level in the Cray hierarchy sits the Cray Application Level Placement Scheduler,
 commonly referred to as ALPS \cite{alps}.  While in most instances, a batch
 system is making scheduling decisions based upon configuration of center
 policy, ALPS is the piece of software at the lowest level that is handed
@@ -35,17 +35,17 @@ that requires users to run ALPS commands that sit and wait for available
 resources to run jobs.  How is this different from a batch system?  In a
 nutshell, batch systems provide a mechanism for the user to submit a job to be
 run at a later time without the burden of making sure the machine doesn't
-reboot taking the waiting ALPS command down with it, and batch systems also
-allow a reordering of jobs based on policies determined by the center.  In
-contrast, batch mode simply enables the use of a batch system for job launch
+reboot taking the waiting ALPS command down with it. Batch systems also allow a
+priority-based reordering of jobs based on policies determined by the center.
+In contrast, batch mode simply enables the use of a batch system for job launch
 ignoring any user-supplied ALPS commands run outside of the batch system.
 
 Reservations are used to manage availability of nodes that are in an up state.
-When a job is launched, it is launched on a set of nodes, and those nodes are
-reserved for that job.  When the job finishes, the reservation is destroyed,
-and those nodes are available for the next job.  Reservations are simply the
-mechanism by which a job receives exclusive access to the resources necessary
-to run the job.
+When a job is launched, it is assigned to a set of nodes. Those nodes are
+exclusively reserved for that job.  When the job finishes, the reservation is
+destroyed, and those nodes are available for the next job.  Reservations are
+simply the mechanism by which a job receives exclusive access to the resources
+necessary to run the job.
 
 All of the ALPS information must somehow get communicated to the batch system
 in order to provide the user with the available resources on the system and to

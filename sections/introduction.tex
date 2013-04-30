@@ -5,12 +5,12 @@ workload. Job schedulers are designed to intelligently determine when jobs
 should run, optimizing for various goals such as high utilization or minimal
 queue wait. Resource managers typically accept job submissions and handle job
 launch. Cray systems are uniquely different from typical clusters due to an
-additional layer called Cray’s Application Level Placement Scheduler (ALPS).
+additional layer called Cray's Application Level Placement Scheduler (ALPS).
 ALPS manages binary transfer, job launch and monitoring, and error handling.
 Batch systems require special support to integrate with ALPS using an XML
 protocol called BASIL.
 
-Previous versions of Adaptive Computing’s TORQUE and Moab batch suite
+Previous versions of Adaptive Computing's TORQUE and Moab batch suite
 integrated with ALPS from within Moab, using PERL scripts to interface with
 BASIL. This would occasionally lead to problems when all the components would
 become unsynchronized. Additionally, TORQUE was unaware of the Cray compute
@@ -23,5 +23,6 @@ multithreading features prevented successful deployment of the new versions of
 TORQUE. Through close collaboration with Adaptive Computing, the software
 improved significantly to the point where it was acceptable for use on the
 Titan and Gaea systems. Additionally, this paper describes production
-experiences at Oak Ridge National Lab using the new TORQUE software versions
-and describes future collaborative work to improve Cray-enabled TORQUE.
+experiences at Oak Ridge National Laboratory using the new TORQUE software
+versions and describes future collaborative work to improve Cray-enabled
+TORQUE.

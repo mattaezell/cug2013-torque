@@ -19,7 +19,7 @@ resource inventories, ALPS reservations, and job launch:
     The partition query script talks to both ALPS and TORQUE to determine what 
     ALPS reservations exist and if they correspond to a running job
   \item[partition.create.xt4.pl] \hfill \\
-    This script interfaces with BASIL to create a reservation based on the 
+    This script interfaces with BASIL to create an ALPS reservation based on the 
     resource requests of a job. It does not confirm the request, as this must be
     done by TORQUE once the SID or PAGG is known
   \item[job.start.xt4.pl] \hfill \\
@@ -56,4 +56,5 @@ reservation to remain after the job had exited.  These ``orphan'' reservations
 would block system resources until manually removed.  In an attempt to avoid
 this, Moab added code to help find and destroy these orphan reservations.  By
 setting the \textbf{MOABPARCLEANUP} environment variable, Moab would know to
-try to remove reservations that it didn't expect to be present.
+try to remove reservations that it didn't expect to be present at the expense
+of extra processing each iteration.
